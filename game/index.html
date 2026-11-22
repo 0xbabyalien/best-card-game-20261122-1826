@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cinder Pact — a duel card game</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+
+  <!-- TITLE SCREEN -->
+  <section id="screen-title" class="screen">
+    <div class="title-wrap">
+      <div class="title-ember" aria-hidden="true">&#x25B2;</div>
+      <h1 class="game-title">CINDER PACT</h1>
+      <p class="game-tag">A duel of flame, tide, thorn and stone. You against Rook — first to 0 life loses.</p>
+      <div class="title-buttons">
+        <button id="start-btn" class="btn btn-primary">Play</button>
+        <button id="howto-btn" class="btn">How to Play</button>
+      </div>
+      <div class="legend">
+        <div class="legend-title">The four suits</div>
+        <div class="legend-row">
+          <span class="legend-chip suit-flame"><span class="lg">&#x25B2;</span> Flame — Attack</span>
+          <span class="legend-chip suit-tide"><span class="lg">&#x25CF;</span> Tide — Guard</span>
+          <span class="legend-chip suit-thorn"><span class="lg">&#x25C6;</span> Thorn — Leech</span>
+          <span class="legend-chip suit-stone"><span class="lg">&#x25A0;</span> Stone — Quarry</span>
+        </div>
+        <p class="legend-note">Each round you both reveal a card at once. Play the same suit as your
+        last round for Momentum +2. Life 20 each. Rook thinks out loud — read its reasons and play around them.</p>
+      </div>
+      <p class="keys-hint">Keys: 1–7 select · Enter play · N new game · H help · Esc title</p>
+    </div>
+  </section>
+
+  <!-- TABLE SCREEN -->
+  <section id="screen-table" class="screen hidden">
+    <header class="table-top">
+      <div class="brand">CINDER PACT</div>
+      <div class="meta">
+        <span id="round-label">Round 1</span>
+        <span id="deck-label">Deck: 40 / 40</span>
+        <span id="momentum-label"></span>
+      </div>
+      <div class="table-actions">
+        <button id="help-btn" class="btn btn-small">How to Play</button>
+        <button id="new-game-btn" class="btn btn-small">New Game</button>
+        <button id="title-btn" class="btn btn-small">Title</button>
+      </div>
+    </header>
+    <main class="table">
+      <div id="opp-area" class="opp-area"></div>
+      <div id="centre-area" class="centre-area"></div>
+      <div class="bottom-row">
+        <div id="you-area" class="you-area"></div>
+        <div class="side-panel">
+          <button id="play-btn" class="btn btn-primary btn-play">Play Card</button>
+          <div id="log" class="log" aria-live="polite"></div>
+        </div>
+      </div>
+    </main>
+  </section>
+
+  <!-- END SCREEN -->
+  <section id="screen-end" class="screen hidden">
+    <div class="end-wrap">
+      <h1 id="end-title" class="end-title">YOU WIN THE PACT</h1>
+      <p id="end-sub" class="end-sub"></p>
+      <div id="end-stats" class="end-stats"></div>
+      <div class="title-buttons">
+        <button id="end-new-btn" class="btn btn-primary">New Game</button>
+        <button id="end-title-btn" class="btn">Title</button>
+      </div>
+      <div id="log-end" class="log end-log" aria-live="polite"></div>
+    </div>
+  </section>
+
+  <!-- HELP SCREEN -->
+  <section id="screen-help" class="screen hidden">
+    <div class="help-wrap">
+      <h1 class="help-title">How to Play</h1>
+      <p><strong>The duel.</strong> You and Rook each have 20 life. Every round you both pick one
+      card and reveal it at the same time. First to 0 life loses; if both fall in the same round it is a draw.</p>
+      <p><strong>The deck.</strong> 40 cards: four suits, values 1–10. You start with 5 cards and draw
+      1 each round (hand cap 7). If the deck runs out, hands play out; with both hands empty, higher life wins.</p>
+      <p><strong>Momentum.</strong> Play the same suit as your previous round and the card gains +2
+      before its effect.</p>
+      <ul class="help-suits">
+        <li><span class="suit-flame"><b>&#x25B2; Flame — Attack.</b></span> Deal power damage; shield absorbs it first.</li>
+        <li><span class="suit-tide"><b>&#x25CF; Tide — Guard.</b></span> Gain power shield (max 12).</li>
+        <li><span class="suit-thorn"><b>&#x25C6; Thorn — Leech.</b></span> Deal half power, piercing shield, and heal the same.</li>
+        <li><span class="suit-stone"><b>&#x25A0; Stone — Quarry.</b></span> Gain half power shield and draw a card.</li>
+      </ul>
+      <p><strong>Rook.</strong> The rival thinks out loud in the log: it guards when hurt, leeches
+      through thick shields, and chases its own momentum. Read it and counter it.</p>
+      <p><strong>Controls.</strong> Click a card to select it, click Play (or double-click the card).
+      Keys: 1–7 select · Enter/Space play · N new game · H help · Esc title.</p>
+      <div class="title-buttons">
+        <button id="help-close-btn" class="btn btn-primary">Back</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+<script src="src/deck.js"></script>
+<script src="src/ai.js"></script>
+<script src="src/game.js"></script>
+<script src="src/render.js"></script>
+<script src="src/input.js"></script>
+<script src="src/main.js"></script>
+</body>
+</html>
